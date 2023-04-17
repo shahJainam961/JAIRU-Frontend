@@ -23,6 +23,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ManagerLoginComponent } from './components/manager-login/manager-login.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { EmployeeLoginComponent } from './components/employee-login/employee-login.component';
 
 
 @NgModule({
@@ -30,6 +33,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppComponent,
     WelcomeComponent,
     NavbarComponent,
+    ManagerLoginComponent,
+    AdminLoginComponent,
+    EmployeeLoginComponent,
   ],
   imports: [
     FormsModule,ReactiveFormsModule,

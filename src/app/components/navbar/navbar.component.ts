@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthguardService } from 'src/app/services/authguard.service';
 import { Router, NavigationEnd  } from '@angular/router';
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ import { Router, NavigationEnd  } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   isLoggedIn = false;
-  constructor(private auth:AuthguardService,/* todo private loginService:LoginService, */private router:Router) {
+  constructor(private auth:AuthguardService, private loginService:LoginService, private router:Router) {
 
    }
 
@@ -19,7 +20,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(){
-    //todo this.loginService.logout();
+    this.loginService.logout();
     this.isLoggedIn = this.auth.getToken();
   }
 
