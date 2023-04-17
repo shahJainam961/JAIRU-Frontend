@@ -51,7 +51,7 @@ export class ManagerLoginComponent implements OnInit {
             window.location.href="/managerDashboard";
           },
           (error:any) => {
-            this._snackBar.open(error, 'Close', {
+            this._snackBar.open("Something went wrong !!", 'Close', {
               horizontalPosition: this.horizontalPosition,
               verticalPosition: this.verticalPosition,
               duration: 2* 1000,
@@ -61,7 +61,7 @@ export class ManagerLoginComponent implements OnInit {
 
       },
       (error:any) => {
-        this._snackBar.open(error["error"], 'Close', {
+        this._snackBar.open("Something went wrong !!", 'Close', {
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
           duration: 2* 1000,

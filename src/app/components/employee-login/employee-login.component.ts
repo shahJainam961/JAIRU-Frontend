@@ -52,7 +52,7 @@ export class EmployeeLoginComponent implements OnInit {
             window.location.href = "/employeeDashboard";
           },
           (error:any) => {
-            this._snackBar.open(error, 'Close', {
+            this._snackBar.open("Something went wrong !!", 'Close', {
               horizontalPosition: this.horizontalPosition,
               verticalPosition: this.verticalPosition,
               duration: 2* 1000,
@@ -62,7 +62,7 @@ export class EmployeeLoginComponent implements OnInit {
 
       },
       (error:any) => {
-        this._snackBar.open(error["error"], 'Close', {
+        this._snackBar.open("Something went wrong !!", 'Close', {
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
           duration: 2* 1000,

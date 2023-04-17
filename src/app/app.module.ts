@@ -26,6 +26,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ManagerLoginComponent } from './components/manager-login/manager-login.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { EmployeeLoginComponent } from './components/employee-login/employee-login.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { EmployeeLoginComponent } from './components/employee-login/employee-log
     ManagerLoginComponent,
     AdminLoginComponent,
     EmployeeLoginComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     FormsModule,ReactiveFormsModule,

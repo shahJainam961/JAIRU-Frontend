@@ -5,6 +5,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import {ManagerLoginComponent} from "./components/manager-login/manager-login.component";
 import {EmployeeLoginComponent} from "./components/employee-login/employee-login.component";
 import {AdminLoginComponent} from "./components/admin-login/admin-login.component";
+import {AdminDashboardComponent} from "./components/admin-dashboard/admin-dashboard.component";
 
 const routes: Routes = [
   {
@@ -31,6 +32,12 @@ const routes: Routes = [
     path:'adminLogin',
     component:AdminLoginComponent,
     pathMatch:'full'
+  },
+  {
+    path:'adminDashboard',
+    component:AdminDashboardComponent,
+    pathMatch:'full',
+    canActivate:[AuthenticationGuard]
   },
 ];
 
