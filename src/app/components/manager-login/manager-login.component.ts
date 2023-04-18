@@ -69,12 +69,6 @@ export class ManagerLoginComponent implements OnInit {
         this.isError = true;
       }
     );
-
-    // if(this.auth.getToken())
-    // {
-    //   this.route.navigateByUrl("/managerDashboard")
-    // }
-    // window.location.reload();
   }
 
 }
