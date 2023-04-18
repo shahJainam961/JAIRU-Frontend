@@ -6,6 +6,7 @@ import {ManagerLoginComponent} from "./components/manager-login/manager-login.co
 import {EmployeeLoginComponent} from "./components/employee-login/employee-login.component";
 import {AdminLoginComponent} from "./components/admin-login/admin-login.component";
 import {AdminDashboardComponent} from "./components/admin-dashboard/admin-dashboard.component";
+import {EmployeeDashboardComponent} from "./components/employee-dashboard/employee-dashboard.component";
 
 const routes: Routes = [
   {
@@ -36,6 +37,12 @@ const routes: Routes = [
   {
     path:'adminDashboard',
     component:AdminDashboardComponent,
+    pathMatch:'full',
+    canActivate:[AuthenticationGuard]
+  },
+  {
+    path:'employeeDashboard',
+    component:EmployeeDashboardComponent,
     pathMatch:'full',
     canActivate:[AuthenticationGuard]
   },
