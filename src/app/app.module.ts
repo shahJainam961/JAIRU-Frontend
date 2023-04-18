@@ -28,6 +28,7 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { EmployeeLoginComponent } from './components/employee-login/employee-login.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { EmployeeDashboardComponent } from './components/employee-dashboard/employee-dashboard.component';
+import { ManagerDashboardComponent } from './components/manager-dashboard/manager-dashboard.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { EmployeeDashboardComponent } from './components/employee-dashboard/empl
     EmployeeLoginComponent,
     AdminDashboardComponent,
     EmployeeDashboardComponent,
+    ManagerDashboardComponent,
   ],
   imports: [
     FormsModule,ReactiveFormsModule,
