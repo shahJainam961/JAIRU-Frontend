@@ -14,6 +14,7 @@ pipeline{
         }
         stage("Testing Stage"){
             steps{
+              sh 'echo Testing'
             }
         }
         stage("build image"){
