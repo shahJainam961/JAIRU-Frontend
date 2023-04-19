@@ -1,0 +1,10 @@
+- name: Deploying 'JAIRU' Project
+  hosts: all
+  become: yes
+  tasks:
+    - name: stop all the services
+      shell:
+        docker-compose up -d
+    - name: start all the services
+      shell:
+        docker-compose up -d
