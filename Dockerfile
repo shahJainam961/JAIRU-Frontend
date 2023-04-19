@@ -9,7 +9,7 @@ WORKDIR /jairu/frontend
 COPY package*.json ./
 RUN npm i --legacy-peer-deps
 COPY . ./
-RUN ng b
+RUN ./node_modules/.bin/ng build
 
 FROM nginx
 WORKDIR /usr/share/nginx/html
