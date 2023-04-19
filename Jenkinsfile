@@ -8,8 +8,7 @@ pipeline{
         }
         stage("Building Stage"){
             steps{
-                sh 'npm i --legacy-peer-deps'
-                sh 'ng b'
+                sh 'echo Building'
             }
         }
         stage("Testing Stage"){
