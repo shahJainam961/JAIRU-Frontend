@@ -1,6 +1,7 @@
 version: '3'
 services:
   jairu_db:
+    container_name: jairu-db
     image: mysql
     working_dir: /jairu/db
     environment:
@@ -10,9 +11,10 @@ services:
       MYSQL_DATABASE: jairu
     networks:
       mcr_net:
-        ipv4_address: 172.16.2.10
+        ipv4_address: 172.30.3.1
 
   jairu_backend:
+    container_name: jairu-backend
     image: murphy961/jairu-backend:1.0
     working_dir: /jairu/backend
     stdin_open: true
@@ -22,10 +24,11 @@ services:
       - jairu_db
     networks:
       mcr_net:
-        ipv4_address: 172.16.2.9
+        ipv4_address: 172.30.3.2
     restart: unless-stopped
 
   jairu_frontend:
+    container_name: jairu-frontend
     image: murphy961/jairu-frontend:1.0
     working_dir: /jairu/frontend
     stdin_open: true
@@ -37,7 +40,7 @@ services:
       - jairu_backend
     networks:
       mcr_net:
-        ipv4_address: 172.16.2.8
+        ipv4_address: 172.30.3.3
     restart: unless-stopped
 
 networks:
@@ -45,4 +48,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.16.2.0/24
+        - subnet: 172.30.3.0/24
