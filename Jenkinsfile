@@ -25,7 +25,7 @@ pipeline{
         }
         stage("Ansible Stage"){
             steps{
-                sh 'ansible-playbook -i inventory playbook.yaml'
+                sh 'echo jainam'
             }
         }
     }
