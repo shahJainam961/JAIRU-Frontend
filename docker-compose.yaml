@@ -3,7 +3,9 @@ services:
   jairu-db:
     container_name: jairu-db
     image: mysql
-    working_dir: /jairu/db
+    #    working_dir: /jairu/db
+#    volumes:
+#      - jairu-db-vol:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: murphy
@@ -17,6 +19,8 @@ services:
     container_name: jairu-backend
     image: murphy961/jairu-backend:1.0
     working_dir: /jairu/backend
+#    volumes:
+#      - jairu-backend-db:/logs
     stdin_open: true
     expose:
       - 8086
@@ -44,6 +48,10 @@ services:
     #      mcr_net:
     #        ipv4_address: 172.30.3.3
     restart: unless-stopped
+
+#volumes:
+#  jairu-db-vol:
+#  jairu-backend-vol:
 
 #networks:
 #  jairu-net:
