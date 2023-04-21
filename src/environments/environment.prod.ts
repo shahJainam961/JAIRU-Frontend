@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: 'http://jairu-backend:8086'
+  apiURL: 'http://localhost:8086'
 };
