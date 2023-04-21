@@ -18,7 +18,7 @@ pipeline{
         }
         stage("Pushing Docker Image on DockerHub"){
             steps{
-                sh ''docker push murphy961/jairu-frontend:1.0'
+                sh 'docker push murphy961/jairu-frontend:1.0'
             }
         }
         stage("Ansible Stage"){
