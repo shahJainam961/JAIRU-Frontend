@@ -8,22 +8,39 @@
 #    - name: start all the services
 #      shell:
 #        docker-compose up -d
-# downloading docker-compose
-#  rm /usr/local/bin/docker-compose||ls&&curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose&&chmod +x /usr/local/bin/docker-compose
+
+
 
 - name: Run Docker Compose file on VM
   hosts: all
   become: yes
 
   tasks:
+    - name: Remove docker-compose file if any
+      shell:
+        rm docker-compose.yaml||rm docker-compose.yml||ls
+
     - name: Copy Docker Compose file to VM
       copy:
         src: /var/lib/jenkins/workspace/JAIRU-Frontend/docker-compose.yaml
         dest: ./docker-compose.yaml
 
     - name: stop all the services
+      become_user: root
+      docker_compose:
+        state: absent
+
+    - name: Remove images of frontend if any
       shell:
-        docker-compose down
-    - name: start all the services
+        docker rmi murphy961/jairu-frontend:1.0||ls
+
+    - name: Remove images of backend if any
       shell:
-        docker-compose up -d
+        docker rmi murphy961/jairu-backend:1.0||ls
+
+    - name: Run Docker Compose on VM
+      become_user: root
+      docker_compose:
+        project_name: Jairu
+        state: started
+        config_path: ./docker-compose.yml
