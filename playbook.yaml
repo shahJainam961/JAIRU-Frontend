@@ -26,9 +26,8 @@
         dest: ./docker-compose.yaml
 
     - name: stop all the services
-      become_user: root
-      docker_compose:
-        state: absent
+      shell:
+        docker-compose down
 
     - name: Remove images of frontend if any
       shell:
@@ -39,8 +38,5 @@
         docker rmi murphy961/jairu-backend:1.0||ls
 
     - name: Run Docker Compose on VM
-      become_user: root
-      docker_compose:
-        project_name: Jairu
-        state: started
-        config_path: ./docker-compose.yml
+      shell:
+        docker-compose up -d
