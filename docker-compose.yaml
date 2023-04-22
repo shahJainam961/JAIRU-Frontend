@@ -20,7 +20,7 @@ services:
     image: murphy961/jairu-backend:1.0
     working_dir: /jairu/backend
     volumes:
-      - jairu-backend-db:.
+      - jairu-backend-vol:.
     stdin_open: true
     expose:
       - 8086
