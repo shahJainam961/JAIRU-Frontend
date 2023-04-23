@@ -27,13 +27,13 @@ pipeline{
         }
         stage("Ansible Stage"){
             steps{
-                ansiblePlaybook becomeUser: 'null',
-                colorized: true,
-                installation: 'Ansible',
-                inventory: 'inventory',
-                playbook: 'playbook.yaml',
-                sudoUser: 'null',
-                vaultCredentialsId: 'ANSIBLE_VAULT_PASSWORD'
+              ansiblePlaybook becomeUser: 'null',
+              colorized: true,
+              installation: 'Ansible',
+              inventory: 'inventory',
+              playbook: 'playbook.yaml',
+              sudoUser: 'null',
+              vaultCredentialsId: 'ANSIBLE_VAULT_PASSWORD'
             }
         }
     }
