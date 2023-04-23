@@ -20,7 +20,7 @@
   tasks:
     - name: Decrypt file
       set_fact:
-        decrypted_file: "{{ lookup('file', vault_file) | ansible-vault }}"
+        decrypted_file: "{{ lookup('vault', vault_file) | ansible-vault }}"
 
     - name: Extract variables
       set_fact:
