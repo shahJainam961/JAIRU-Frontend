@@ -1,6 +1,7 @@
 pipeline{
     environment{
             DOCKERHUB = credentials('MURPHY_DOCKER_HUB_CREDS')
+            ANSIBLE_VAULT_PASSWORD = credentials('ANSIBLE_VAULT_PASSWORD')
     }
     agent any
     stages{
@@ -26,7 +27,13 @@ pipeline{
         }
         stage("Ansible Stage"){
             steps{
-                sh 'ansible-playbook -i inventory playbook.yaml'
+                ansiblePlaybook becomeUser: 'null',
+                colorized: true,
+                installation: 'Ansible',
+                inventory: 'inventory',
+                playbook: 'playbook.yaml',
+                sudoUser: 'null',
+                vaultCredentialsId: 'ANSIBLE_VAULT_PASSWORD'
             }
         }
     }

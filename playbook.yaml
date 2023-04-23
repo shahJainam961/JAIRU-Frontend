@@ -14,29 +14,27 @@
 - name: Run Docker Compose file on VM
   hosts: all
   become: yes
-  vars:
-    vault_file: env_vars.yaml
-  collections:
-    - ansible.posix
+  vars_files:
+    - env_vars.yaml
 
   tasks:
-    - name: Decrypt file
-      set_fact:
-        decrypted_file: "{{ lookup('file', vault_file) | ansible-vault decrypt --vault-password-file=<(echo 2698) }}"
-
-    - name: Extract variables
-      set_fact:
-        MYSQL_ROOT_PASSWORD: "{{ decrypted_file | regex_replace('(?m)^MYSQL_ROOT_PASSWORD: (.*)$', '\\1') }}"
-        MYSQL_USER: "{{ decrypted_file | regex_replace('(?m)^MYSQL_USER: (.*)$', '\\1') }}"
-        MYSQL_PASSWORD: "{{ decrypted_file | regex_replace('(?m)^MYSQL_PASSWORD: (.*)$', '\\1') }}"
-        MYSQL_DATABASE: "{{ decrypted_file | regex_replace('(?m)^MYSQL_DATABASE: (.*)$', '\\1') }}"
-        BACKEND_EXPOSE_PORT: "{{ decrypted_file | regex_replace('(?m)^BACKEND_EXPOSE_PORT: (.*)$', '\\1') }}"
-        BACKEND_INTERNAL_PORT: "{{ decrypted_file | regex_replace('(?m)^BACKEND_INTERNAL_PORT: (.*)$', '\\1') }}"
-        FRONTEND_EXPOSE_PORT: "{{ decrypted_file | regex_replace('(?m)^FRONTEND_EXPOSE_PORT: (.*)$', '\\1') }}"
-        FRONTEND_INTERNAL_PORT: "{{ decrypted_file | regex_replace('(?m)^FRONTEND_INTERNAL_PORT: (.*)$', '\\1') }}"
-        DB_SERVICE_NAME: "{{ decrypted_file | regex_replace('(?m)^DB_SERVICE_NAME: (.*)$', '\\1') }}"
-        BACKEND_SERVICE_NAME: "{{ decrypted_file | regex_replace('(?m)^BACKEND_SERVICE_NAME: (.*)$', '\\1') }}"
-        FRONTEND_SERVICE_NAME: "{{ decrypted_file | regex_replace('(?m)^FRONTEND_SERVICE_NAME: (.*)$', '\\1') }}"
+#    - name: Decrypt file
+#      set_fact:
+#        decrypted_file: "{{ lookup('file', vault_file) | ansible-vault decrypt --vault-password-file=<(echo 2698) }}"
+#
+#    - name: Extract variables
+#      set_fact:
+#        MYSQL_ROOT_PASSWORD: "{{ decrypted_file | regex_replace('(?m)^MYSQL_ROOT_PASSWORD: (.*)$', '\\1') }}"
+#        MYSQL_USER: "{{ decrypted_file | regex_replace('(?m)^MYSQL_USER: (.*)$', '\\1') }}"
+#        MYSQL_PASSWORD: "{{ decrypted_file | regex_replace('(?m)^MYSQL_PASSWORD: (.*)$', '\\1') }}"
+#        MYSQL_DATABASE: "{{ decrypted_file | regex_replace('(?m)^MYSQL_DATABASE: (.*)$', '\\1') }}"
+#        BACKEND_EXPOSE_PORT: "{{ decrypted_file | regex_replace('(?m)^BACKEND_EXPOSE_PORT: (.*)$', '\\1') }}"
+#        BACKEND_INTERNAL_PORT: "{{ decrypted_file | regex_replace('(?m)^BACKEND_INTERNAL_PORT: (.*)$', '\\1') }}"
+#        FRONTEND_EXPOSE_PORT: "{{ decrypted_file | regex_replace('(?m)^FRONTEND_EXPOSE_PORT: (.*)$', '\\1') }}"
+#        FRONTEND_INTERNAL_PORT: "{{ decrypted_file | regex_replace('(?m)^FRONTEND_INTERNAL_PORT: (.*)$', '\\1') }}"
+#        DB_SERVICE_NAME: "{{ decrypted_file | regex_replace('(?m)^DB_SERVICE_NAME: (.*)$', '\\1') }}"
+#        BACKEND_SERVICE_NAME: "{{ decrypted_file | regex_replace('(?m)^BACKEND_SERVICE_NAME: (.*)$', '\\1') }}"
+#        FRONTEND_SERVICE_NAME: "{{ decrypted_file | regex_replace('(?m)^FRONTEND_SERVICE_NAME: (.*)$', '\\1') }}"
 
     - name: Remove docker-compose file if any
       shell:
@@ -74,5 +72,3 @@
         DB_SERVICE_NAME: "{{ DB_SERVICE_NAME }}"
         BACKEND_SERVICE_NAME: "{{ BACKEND_SERVICE_NAME }}"
         FRONTEND_SERVICE_NAME: "{{ FRONTEND_SERVICE_NAME }}"
-
-
