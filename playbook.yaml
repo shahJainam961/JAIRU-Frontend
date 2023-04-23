@@ -14,8 +14,8 @@
 - name: Run Docker Compose file on VM
   hosts: all
   become: yes
-  vars_files:
-    - env_vars.yaml
+#  vars_files:
+#    - env_vars.yaml
 
   tasks:
 #    - name: Decrypt file
