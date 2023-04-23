@@ -16,6 +16,8 @@
   become: yes
   vars:
     vault_file: env_vars.yaml
+  collections:
+    - ansible.posix
 
   tasks:
     - name: Decrypt file
