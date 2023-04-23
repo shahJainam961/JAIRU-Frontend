@@ -1,4 +1,7 @@
 pipeline{
+    environment{
+            DOCKERHUB = credentials('MURPHY_DOCKER_HUB_CREDS')
+    }
     agent any
     stages{
         stage("Git Cloning Stage"){
@@ -8,7 +11,7 @@ pipeline{
         }
         stage("Docker Login"){
             steps{
-                sh 'docker login -u "murphy961" -p "Dockerhub@961"'
+                sh 'docker login -u $DOCKERHUB_USR -p $DOCKERHUB_PSW'
             }
         }
         stage("Building Docker Image"){

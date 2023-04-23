@@ -1,21 +1,21 @@
 version: '3'
 services:
-  jairu-db:
+  ${DB_SERVICE_NAME}:
     container_name: jairu-db
     image: mysql
     #    working_dir: /jairu/db
     volumes:
       - jairu-db-vol:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: murphy
-      MYSQL_PASSWORD: Murphy@961
-      MYSQL_DATABASE: jairu
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
   #    networks:
   #      mcr_net:
   #        ipv4_address: 172.30.3.1
 
-  jairu-backend:
+  ${BACKEND_SERVICE_NAME}:
     container_name: jairu-backend
     image: murphy961/jairu-backend:1.0
     working_dir: /jairu/backend
@@ -23,9 +23,9 @@ services:
       - jairu-backend-vol:/jairu/backend
     stdin_open: true
     expose:
-      - 8086
+      - ${BACKEND_EXPOSE_PORT}
     ports:
-      - 8086:8086
+      - ${BACKEND_EXPOSE_PORT}:${BACKEND_INTERNAL_PORT}"
     depends_on:
       - jairu-db
     #    networks:
@@ -33,15 +33,15 @@ services:
     #        ipv4_address: 172.30.3.2
     restart: unless-stopped
 
-  jairu-frontend:
+  ${FRONTEND_SERVICE_NAME}:
     container_name: jairu-frontend
     image: murphy961/jairu-frontend:1.0
     working_dir: /jairu/frontend
     stdin_open: true
     expose:
-      - 8087
+      - ${FRONTEND_EXPOSE_PORT}
     ports:
-      - 8087:80
+      - ${FRONTEND_EXPOSE_PORT}:${FRONTEND_EXPOSE_PORT}
     depends_on:
       - jairu-backend
     #    networks:
