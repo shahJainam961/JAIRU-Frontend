@@ -2,7 +2,15 @@
   hosts: all
   become: yes
 
+  vars_files:
+    - ./env_vars.yaml
+
   tasks:
+    - name: Generate env vars from jinja2 template
+      template:
+        src: ./env_vars.j2
+        dest: .env_vars
+
     - name: Remove docker-compose file if any
       shell:
         rm docker-compose.yaml||rm docker-compose.yml||ls
@@ -24,7 +32,15 @@
       shell:
         docker rmi murphy961/jairu-backend:1.0||ls
 
-    - name: Run Docker Compose on VM
+    - name: Create Docker containers without starting
+      shell:
+        docker-compose up --no-start
+
+    - name: Copying env vars
+      shell:
+        docker cp .env_vars jairu-backend:/jairu/backend
+
+    - name: Start the containers on VM
       shell:
         docker-compose up -d
 #      environment:

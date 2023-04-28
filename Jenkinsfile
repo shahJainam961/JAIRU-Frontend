@@ -27,7 +27,10 @@ pipeline{
         }
         stage("Ansible Stage"){
             steps{
-              sh 'ansible-playbook -i inventory playbook.yaml'
+                ansiblePlaybook(
+                inventory: 'inventory',
+                playbook: 'playbook.yaml',
+                vaultCredentialsId: 'ANSIBLE_VAULT_PASSWORD')
             }
         }
     }
