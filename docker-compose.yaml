@@ -3,7 +3,6 @@ services:
   jairu-db:
     container_name: jairu-db
     image: mysql
-    #    working_dir: /jairu/db
     volumes:
       - jairu-db-vol:/var/lib/mysql
     environment:
@@ -11,9 +10,6 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
-  #    networks:
-  #      mcr_net:
-  #        ipv4_address: 172.30.3.1
 
   jairu-backend:
     container_name: jairu-backend
@@ -28,9 +24,6 @@ services:
       - 8086:8086
     depends_on:
       - jairu-db
-    #    networks:
-    #      mcr_net:
-    #        ipv4_address: 172.30.3.2
     restart: unless-stopped
     environment:
       DB_SERVICE_NAME: ${DB_SERVICE_NAME}
@@ -50,19 +43,8 @@ services:
       - 8087:80
     depends_on:
       - jairu-backend
-    #    networks:
-    #      mcr_net:
-    #        ipv4_address: 172.30.3.3
     restart: unless-stopped
 
 volumes:
   jairu-db-vol:
   jairu-backend-vol:
-
-
-#networks:
-#  jairu-net:
-#    ipam:
-#      driver: default
-#      config:
-#        - subnet: 172.30.3.0/24

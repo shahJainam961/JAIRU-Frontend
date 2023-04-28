@@ -1,2 +1,0 @@
-[jairuVm]
-jairu ansible_host=172.16.201.120 ansible_ssh_pass=2698 ansible_ssh_user=murphy anisble_sudo_pass=2698 ansible_sudo_user=murphy

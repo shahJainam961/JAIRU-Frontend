@@ -2,6 +2,7 @@ pipeline{
     environment{
             DOCKERHUB = credentials('MURPHY_DOCKER_HUB_CREDS')
             ANSIBLE_VAULT_PASSWORD = credentials('ANSIBLE_VAULT_PASSWORD')
+            INVENTORY = credentials('INVENTORY')
     }
     agent any
     stages{
@@ -27,6 +28,7 @@ pipeline{
         }
         stage("Ansible Stage"){
             steps{
+                sh 'echo $INVENTORY >> inventory
                 ansiblePlaybook(
                 inventory: 'inventory',
                 playbook: 'playbook.yaml',
