@@ -1,41 +1,8 @@
-#- name: Deploying 'JAIRU' Project
-#  hosts: all
-#  become: yes
-#  tasks:
-#    - name: stop all the services
-#      shell:
-#        docker-compose up -d
-#    - name: start all the services
-#      shell:
-#        docker-compose up -d
-
-
-
 - name: Run Docker Compose file on VM
   hosts: all
   become: yes
-  vars_files:
-    - env_vars.yaml
 
   tasks:
-#    - name: Decrypt file
-#      set_fact:
-#        decrypted_file: "{{ lookup('file', vault_file) | ansible-vault decrypt --vault-password-file=<(echo 2698) }}"
-#
-#    - name: Extract variables
-#      set_fact:
-#        MYSQL_ROOT_PASSWORD: "{{ decrypted_file | regex_replace('(?m)^MYSQL_ROOT_PASSWORD: (.*)$', '\\1') }}"
-#        MYSQL_USER: "{{ decrypted_file | regex_replace('(?m)^MYSQL_USER: (.*)$', '\\1') }}"
-#        MYSQL_PASSWORD: "{{ decrypted_file | regex_replace('(?m)^MYSQL_PASSWORD: (.*)$', '\\1') }}"
-#        MYSQL_DATABASE: "{{ decrypted_file | regex_replace('(?m)^MYSQL_DATABASE: (.*)$', '\\1') }}"
-#        BACKEND_EXPOSE_PORT: "{{ decrypted_file | regex_replace('(?m)^BACKEND_EXPOSE_PORT: (.*)$', '\\1') }}"
-#        BACKEND_INTERNAL_PORT: "{{ decrypted_file | regex_replace('(?m)^BACKEND_INTERNAL_PORT: (.*)$', '\\1') }}"
-#        FRONTEND_EXPOSE_PORT: "{{ decrypted_file | regex_replace('(?m)^FRONTEND_EXPOSE_PORT: (.*)$', '\\1') }}"
-#        FRONTEND_INTERNAL_PORT: "{{ decrypted_file | regex_replace('(?m)^FRONTEND_INTERNAL_PORT: (.*)$', '\\1') }}"
-#        DB_SERVICE_NAME: "{{ decrypted_file | regex_replace('(?m)^DB_SERVICE_NAME: (.*)$', '\\1') }}"
-#        BACKEND_SERVICE_NAME: "{{ decrypted_file | regex_replace('(?m)^BACKEND_SERVICE_NAME: (.*)$', '\\1') }}"
-#        FRONTEND_SERVICE_NAME: "{{ decrypted_file | regex_replace('(?m)^FRONTEND_SERVICE_NAME: (.*)$', '\\1') }}"
-
     - name: Remove docker-compose file if any
       shell:
         rm docker-compose.yaml||rm docker-compose.yml||ls
@@ -60,15 +27,15 @@
     - name: Run Docker Compose on VM
       shell:
         docker-compose up -d
-      environment:
-        MYSQL_ROOT_PASSWORD: "{{ MYSQL_ROOT_PASSWORD }}"
-        MYSQL_USER: "{{ MYSQL_USER }}"
-        MYSQL_PASSWORD: "{{ MYSQL_PASSWORD }}"
-        MYSQL_DATABASE: "{{ MYSQL_DATABASE }}"
-        BACKEND_EXPOSE_PORT: "{{ BACKEND_EXPOSE_PORT }}"
-        BACKEND_INTERNAL_PORT: "{{ BACKEND_INTERNAL_PORT }}"
-        FRONTEND_EXPOSE_PORT: "{{ FRONTEND_EXPOSE_PORT }}"
-        FRONTEND_INTERNAL_PORT: "{{ FRONTEND_INTERNAL_PORT }}"
-        DB_SERVICE_NAME: "{{ DB_SERVICE_NAME }}"
-        BACKEND_SERVICE_NAME: "{{ BACKEND_SERVICE_NAME }}"
-        FRONTEND_SERVICE_NAME: "{{ FRONTEND_SERVICE_NAME }}"
+#      environment:
+#        MYSQL_ROOT_PASSWORD: "{{ MYSQL_ROOT_PASSWORD }}"
+#        MYSQL_USER: "{{ MYSQL_USER }}"
+#        MYSQL_PASSWORD: "{{ MYSQL_PASSWORD }}"
+#        MYSQL_DATABASE: "{{ MYSQL_DATABASE }}"
+#        BACKEND_EXPOSE_PORT: "{{ BACKEND_EXPOSE_PORT }}"
+#        BACKEND_INTERNAL_PORT: "{{ BACKEND_INTERNAL_PORT }}"
+#        FRONTEND_EXPOSE_PORT: "{{ FRONTEND_EXPOSE_PORT }}"
+#        FRONTEND_INTERNAL_PORT: "{{ FRONTEND_INTERNAL_PORT }}"
+#        DB_SERVICE_NAME: "{{ DB_SERVICE_NAME }}"
+#        BACKEND_SERVICE_NAME: "{{ BACKEND_SERVICE_NAME }}"
+#        FRONTEND_SERVICE_NAME: "{{ FRONTEND_SERVICE_NAME }}"
