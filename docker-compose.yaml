@@ -1,6 +1,6 @@
 version: '3'
 services:
-  ${DB_SERVICE_NAME}:
+  jairu-db:
     container_name: jairu-db
     image: mysql
     #    working_dir: /jairu/db
@@ -15,7 +15,7 @@ services:
   #      mcr_net:
   #        ipv4_address: 172.30.3.1
 
-  ${BACKEND_SERVICE_NAME}:
+  jairu-backend:
     container_name: jairu-backend
     image: murphy961/jairu-backend:1.0
     working_dir: /jairu/backend
@@ -39,7 +39,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       BACKEND_INTERNAL_PORT: ${BACKEND_INTERNAL_PORT}
 
-  ${FRONTEND_SERVICE_NAME}:
+  jairu-frontend:
     container_name: jairu-frontend
     image: murphy961/jairu-frontend:1.0
     working_dir: /jairu/frontend
