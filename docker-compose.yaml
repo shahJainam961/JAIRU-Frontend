@@ -7,10 +7,10 @@ services:
     volumes:
       - jairu-db-vol:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: murphy
-      MYSQL_PASSWORD: Murphy@961
-      MYSQL_DATABASE: jairu
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
   #    networks:
   #      mcr_net:
   #        ipv4_address: 172.30.3.1
