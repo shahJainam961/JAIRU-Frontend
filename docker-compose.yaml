@@ -7,10 +7,10 @@ services:
     volumes:
       - jairu-db-vol:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: murphy
-      MYSQL_PASSWORD: Murphy@961
-      MYSQL_DATABASE: jairu
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
   #    networks:
   #      mcr_net:
   #        ipv4_address: 172.30.3.1
@@ -32,12 +32,12 @@ services:
     #      mcr_net:
     #        ipv4_address: 172.30.3.2
     restart: unless-stopped
-#    environment:
-#      DB_SERVICE_NAME: jairu-db
-#      MYSQL_DATABASE: jairu
-#      MYSQL_USER: murphy
-#      MYSQL_PASSWORD: Murphy@961
-#      BACKEND_INTERNAL_PORT: 8086
+    environment:
+      DB_SERVICE_NAME: ${DB_SERVICE_NAME}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      BACKEND_INTERNAL_PORT: ${BACKEND_INTERNAL_PORT}
 
   jairu-frontend:
     container_name: jairu-frontend
