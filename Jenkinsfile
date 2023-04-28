@@ -28,7 +28,6 @@ pipeline{
         }
         stage("Ansible Stage"){
             steps{
-                sh 'echo $INVENTORY >> inventory'
                 ansiblePlaybook(
                 inventory: 'inventory',
                 playbook: 'playbook.yaml',
