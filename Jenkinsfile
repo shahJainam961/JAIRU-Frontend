@@ -27,7 +27,7 @@ pipeline{
         }
         stage("Ansible Stage"){
             steps{
-              ansible-playbook -i inventory playbook.yaml
+              ansible-playbook playbook.yaml -i inventory
             }
         }
     }
