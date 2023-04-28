@@ -38,7 +38,7 @@
 
     - name: Copying env vars
       shell:
-        docker cp .env_vars jairu-backend:/jairu/backend
+        docker cp ./.env_vars jairu-backend:/jairu/backend
 
 
     - name: Start the containers on VM
