@@ -29,7 +29,7 @@
 
     - name: Start the containers on VM
       shell:
-        docker-compose up up -d
+        docker-compose up -d
       environment:
         MYSQL_ROOT_PASSWORD: "{{ MYSQL_ROOT_PASSWORD }}"
         MYSQL_USER: "{{ MYSQL_USER }}"
