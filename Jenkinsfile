@@ -17,12 +17,14 @@ pipeline{
         }
         stage("Building Docker Image"){
             steps{
-                sh 'docker build -t murphy961/jairu-frontend:1.0 .'
+                // sh 'docker build -t murphy961/jairu-frontend:1.0 .'
+                sh 'ls'
             }
         }
         stage("Pushing Docker Image on DockerHub"){
             steps{
-                sh 'docker push murphy961/jairu-frontend:1.0'
+                // sh 'docker push murphy961/jairu-frontend:1.0'
+                sh 'ls'
             }
         }
         stage("Ansible Stage"){
