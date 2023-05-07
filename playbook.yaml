@@ -17,7 +17,7 @@
 
     - name: stop all the services
       shell:
-        docker-compose up down
+        docker-compose down
 
     - name: Remove images of frontend if any
       shell:
