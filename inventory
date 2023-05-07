@@ -1,2 +1,2 @@
 [jairuVm]
-ansible_user ansible_host=localhost ansible_ssh_pass=ansible_user ansible_ssh_user=ansible_user anisble_sudo_pass=ansible_user ansible_sudo_user=ansible_user
+murphy ansible_host=localhost ansible_ssh_pass=2698 ansible_ssh_user=murphy anisble_sudo_pass=2698 ansible_sudo_user=murphy
