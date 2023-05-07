@@ -15,9 +15,9 @@
         src: /var/lib/jenkins/workspace/JAIRU-Frontend/docker-compose.yaml
         dest: ./docker-compose.yaml
 
-#    - name: stop all the services
-#      shell:
-#        docker-compose up down
+    - name: stop all the services
+      shell:
+        docker-compose up down
 
     - name: Remove images of frontend if any
       shell:
