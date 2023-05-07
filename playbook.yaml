@@ -18,6 +18,18 @@
     - name: stop all the services
       shell:
         docker-compose down
+      environment:
+        MYSQL_ROOT_PASSWORD: "{{ MYSQL_ROOT_PASSWORD }}"
+        MYSQL_USER: "{{ MYSQL_USER }}"
+        MYSQL_PASSWORD: "{{ MYSQL_PASSWORD }}"
+        MYSQL_DATABASE: "{{ MYSQL_DATABASE }}"
+        BACKEND_EXPOSE_PORT: "{{ BACKEND_EXPOSE_PORT }}"
+        BACKEND_INTERNAL_PORT: "{{ BACKEND_INTERNAL_PORT }}"
+        FRONTEND_EXPOSE_PORT: "{{ FRONTEND_EXPOSE_PORT }}"
+        FRONTEND_INTERNAL_PORT: "{{ FRONTEND_INTERNAL_PORT }}"
+        DB_SERVICE_NAME: "{{ DB_SERVICE_NAME }}"
+        BACKEND_SERVICE_NAME: "{{ BACKEND_SERVICE_NAME }}"
+        FRONTEND_SERVICE_NAME: "{{ FRONTEND_SERVICE_NAME }}"
 
     - name: Remove images of frontend if any
       shell:
