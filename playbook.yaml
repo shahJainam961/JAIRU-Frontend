@@ -6,9 +6,9 @@
     - ./env_vars.yaml
 
   tasks:
-    - name: Remove docker-compose file if any
-      shell:
-        rm docker-compose.yaml||rm docker-compose.yml||ls
+#    - name: Remove docker-compose file if any
+#      shell:
+#        rm docker-compose.yaml||rm docker-compose.yml||ls
 
     - name: Copy Docker Compose file to VM
       copy:
