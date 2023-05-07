@@ -17,7 +17,7 @@
 
     - name: stop all the services
       shell:
-        /usr/local/bin/docker-compose up down
+        docker-compose up down
 
     - name: Remove images of frontend if any
       shell:
@@ -29,7 +29,7 @@
 
     - name: Start the containers on VM
       shell:
-        /usr/local/bin/docker-compose up up -d
+        docker-compose up up -d
       environment:
         MYSQL_ROOT_PASSWORD: "{{ MYSQL_ROOT_PASSWORD }}"
         MYSQL_USER: "{{ MYSQL_USER }}"
